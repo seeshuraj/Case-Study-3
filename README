@@ -1,0 +1,113 @@
+
+# 🧮 Case Study 3: Solving the 2D Poisson Equation using the Conjugate Gradient Method
+
+**Author:** Seeshuraj B  
+**Course:** MSc in High Performance Computing (HPC)  
+**Module:** Numerical Linear Algebra – Case Study 3  
+**Date:** April 2025
+
+---
+
+## 📌 Project Overview
+
+This project implements the **Conjugate Gradient (CG)** method from scratch to solve the **2D Poisson equation** on a unit square using finite difference discretization. The study analyzes solver performance for both:
+- **Sparse systems** (arising from PDE discretization)
+- **Dense symmetric positive definite systems** (for convergence behavior)
+
+Key outcomes include:
+- Iteration and runtime analysis across grid sizes
+- Residual convergence tracking
+- Empirical vs theoretical convergence for dense systems
+- Visualization of the final solution \( u(x, y) \)
+
+---
+
+## 📁 Repository Structure
+
+```bash
+Case-Study-3/
+├── poisson_cg_solver.py           # CG solver for 2D Poisson problem
+├── cg_log_N8.txt                  # Iteration log for N=8
+├── cg_log_N16.txt                 # ...
+├── cg_log_N256.txt                # Iteration log for N=256
+├── convergence_plot.png           # Residual norm vs iteration plot
+├── Figure_1.png                   # Final numerical solution plot
+├── dense_convergence.png          # Empirical vs theoretical convergence (dense)
+├── poisson_cg_report.tex          # LaTeX source of final report
+├── poisson_cg_report.pdf          # Final compiled report (submission)
+```
+
+---
+
+## 🧑‍💻 How to Run the Code
+
+### Requirements
+- Python 3.x
+- NumPy
+- SciPy
+- Matplotlib
+
+### Steps
+```bash
+# Run the sparse CG solver
+python3 poisson_cg_solver.py
+```
+
+This will:
+- Solve the Poisson equation for increasing grid sizes (N = 8, 16, ..., 256)
+- Log iteration details
+- Plot the final solution
+
+---
+
+## 📊 Sample Output (N=256)
+
+```
+   N   Unknowns    Iters   Time (s)
+====================================
+   8         64        30     0.0005
+  16        256        63     0.0006
+  32       1024       128     0.0015
+  64       4096       254     0.0061
+ 128      16384       505     0.4173
+ 256      65536      1026     2.4986
+```
+
+---
+
+## 📐 Numerical Method
+
+The 2D Poisson equation:
+\[
+-\nabla^2 u(x, y) = f(x, y), \quad (x, y) \in (0, 1)^2, \quad u|_{\partial \Omega} = 0
+\]
+
+is discretized using a 5-point finite difference stencil on a uniform \( N \times N \) grid. The linear system is solved using the Conjugate Gradient method with a stopping criterion:
+\[
+\|r_k\| < 10^{-8}
+\]
+
+---
+
+## 📈 Dense CG Convergence
+
+For the dense system:
+\[
+A_{ij} = \frac{N - |i - j|}{N}, \quad b_j = 1
+\]
+
+the CG convergence was studied for \( N = 10^2, 10^3, 10^4 \), comparing:
+- **Iteration count**
+- **Final residuals**
+- **Condition number estimates**
+- **Empirical vs theoretical bounds**
+
+---
+
+## 📝 Report
+
+The full case study report including all tables, figures, and analysis is available here:
+
+📄 `poisson_cg_report.pdf`
+
+---
