@@ -10,7 +10,7 @@
 
 ## 📌 Project Overview
 
-This project implements the **Conjugate Gradient (CG)** method from scratch to solve the **2D Poisson equation** on a unit square using finite difference discretization. The study analyzes solver performance for both:
+This Assignment implements the **Conjugate Gradient (CG)** method from scratch to solve the **2D Poisson equation** on a unit square using finite difference discretization. The study analyzes solver performance for both:
 - **Sparse systems** (arising from PDE discretization)
 - **Dense symmetric positive definite systems** (for convergence behavior)
 
