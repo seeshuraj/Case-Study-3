@@ -74,5 +74,5 @@ if __name__ == "__main__":
 
         print(f"{N:>5} {N**2:>10} {iterations:>10} {end - start:>10.4f}")
 
-    # Optional: plot final solution for largest N
+    # plot final solution for largest N
     plot_solution(u, N)
